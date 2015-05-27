@@ -1,0 +1,66 @@
+﻿@model NewMVC.Models.Order_Detail
+
+@{
+    Layout = "../Shared/_Layout.Phone.cshtml";
+    ViewBag.title = "OrderDetails.Phone.cshtml";
+    ViewBag.message = "Order Details";
+    ViewBag.ShowBackButton = true;
+    ViewBag.ShowHomeButton = true;
+}
+
+
+    <div data-role="content" data-theme="d" id="GetOrderDetails">
+    <div data-role="collapsible-set">
+        <div data-role="collapsible" data-collapsed="false">
+            <h2>Order Details</h2>
+            <div class="ui-grid-a">
+
+                <div class="ui-block-a">
+                    <h3>Order ID</h3>
+                </div>
+                <div class="ui-block-b">
+                    <h4>@Html.DisplayFor(m => m.Order_ID)</h4>
+                </div>
+                <div class="ui-block-a">
+                    <h3>Product ID</h3>
+                </div>
+                <div class="ui-block-b">
+                    <h4>@Html.DisplayFor(m => m.Product_ID)</h4>
+                </div>
+                <div class="ui-block-a">
+                    <h3>Unit Price</h3>
+                </div>
+                <div class="ui-block-b">
+                    <h4>@Html.DisplayFor(m => m.Unit_Price)</h4>
+                </div>
+                <div class="ui-block-a">
+                    <h3>Quantity</h3>
+                </div>
+                <div class="ui-block-b">
+                    <h4>@Html.DisplayFor(m => m.Quantity)</h4>
+                </div>
+                <div class="ui-block-a">
+                    <h3>Discount</h3>
+                </div>
+                <div class="ui-block-b">
+                    <h4>@Html.DisplayFor(m => m.Discount)</h4>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    
+
+</div>
+
+
+@section scripts {
+        <script type="text/javascript">
+            $(document).ready(function () {
+                //alert('getorderdetails loaded');
+            });
+        </script>
+    }
+
+

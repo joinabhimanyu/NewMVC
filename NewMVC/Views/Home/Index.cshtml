@@ -1,0 +1,304 @@
+﻿@model IEnumerable<NewMVC.Models.StateMaster>
+
+@{
+    Layout = null;
+    Page.Title = "State Master";
+    Page.Subtitle = "Details of states present in the State Master Table";
+}
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@Page.Title</title>
+
+    <link href='http://fonts.googleapis.com/css?family=Indie+Flower' rel='stylesheet' type='text/css' />
+
+    @Styles.Render("~/Content/css/frameworks")
+
+    <style type="text/css">
+
+        body {
+            background-color: white;
+            background-position: center;
+            background-repeat: no-repeat;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .table-row {
+            -moz-transition: all 0.3s linear;
+            -o-transition: all 0.3s linear;
+            -webkit-transition: all 0.3s linear;
+            transition: all 0.3s linear;
+        }
+    </style>
+
+</head>
+<body>
+
+    <!-- navbar -->
+
+    <div class="container">
+
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="collapse navbar-collapse" id="menu-nav">
+                    <ul class="nav navbar-nav">
+                        <li><a href="#" data-toggle="modal" data-target="#modalSearch">Create New State</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        @*<div class="row page-header">
+            <h1>@Page.Subtitle</h1>
+        </div>*@
+
+
+        @*<div class="row well">
+            <form class="form-inline" method="get">
+                <div class="form-group">
+                    <input type="text" class="form-control" id="txtSearch" placeholder="Enter state name" />
+                </div>
+                <button type="submit" class="btn btn-success" id="btnSearch">Search</button>
+            </form>
+        </div>*@
+
+        @*<div class="row well">
+            <form class="form-inline" method="post" id="frmInsert">
+                <div class="form-group">
+                    <input type="text" class="form-control" name="StateID" id="new_stateID" placeholder="Enter State ID" />
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" name="StateName" id="new_stateName" placeholder="Enter State Name" />
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" name="StateDispName" id="new_statedispName" placeholder="Enter State Display Name" />
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>*@
+
+        <div class="row well">
+            <form class="form-inline" action="@Url.Action("Search")" method="post">
+                <div class="form-group">
+                    <input type="text" class="form-control" name="StateID" />
+                </div>
+                <input type="submit" class="btn btn-primary" value="Search" />
+            </form>
+        </div>
+
+        <div class="row well">
+            <a class="btn btn-primary" data-toggle="collapse" href="#table-row" aria-expanded="false" aria-controls="table-row">Show Result</a>
+        </div>
+
+        <div class="row well">
+            <select id="StateName" class="selectpicker" style="width: auto;">
+                @foreach (var item in Model)
+                {
+                    <option>@item.StateName</option>
+                }
+            </select>
+        </div>
+
+        <div class="row collapse" id="table-row">
+            <table class="table table-bordered table-condensed" id="tblStates">
+                <thead>
+                    <tr>
+                        <th>State ID</th>
+                        <th>State Name</th>
+                        <th>State Display Name</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var state in Model)
+                    {
+                        <tr>
+                            <td>@state.StateID</td>
+                            <td>@state.StateName</td>
+                            <td>@state.StateDispName</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+        <footer class="row well text-muted">
+            Developed and Designed by CMC Ltd.
+        </footer>
+
+    </div>
+
+
+    <!-- Modal -->
+
+    <!-- Search Modal -->
+    <div class="modal fade" id="modalSearchResult" tabindex="-1" role="dialog" aria-labelledby="search-result" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title" id="search-result">States</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="well">
+                        <table class="table table-bordered table-condensed">
+                            <thead>
+                                <tr>
+                                    <th>State ID</th>
+                                    <th>State Name</th>
+                                    <th>State Display Name</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th>
+                                        <label id="lblStateID"></label>
+                                    </th>
+                                    <th>
+                                        <label id="lblStateName"></label>
+                                    </th>
+                                    <th>
+                                        <label id="lblStateDisplayName"></label>
+                                    </th>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Create Modal -->
+
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="search" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title" id="search">States</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row well">
+                        @Html.Action("Create")
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Popovers -->
+
+    <div class="popover" role="tooltip" id="result-pop">
+        <h1>popover</h1>
+    </div>
+
+
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/js/frameworks")
+
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            $(".selectpicker").selectpicker({
+                style: 'btn-info',
+                size: 4
+            });
+
+            $("#btnSearch").click(function (e) {
+                e.preventDefault();
+                var search_string = $("#txtSearch").val();
+
+                $.ajax({
+                    url: 'http://localhost/NewMVC/api/States/' + search_string,
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function (response) {
+                        $("#lblStateID").html(response.StateID);
+                        $("#lblStateName").html(response.StateName);
+                        $("#lblStateDisplayName").html(response.StateDispName);
+                    },
+                    error: function () {
+                        alert("error occurred");
+                    },
+                    complete: function () {
+                        $("#modalSearch").modal('toggle');
+                    }
+                });
+
+            });
+
+            $("#frmInsert").submit(function (e) {
+                e.preventDefault();
+
+                $.ajax({
+                    url: 'http://localhost/NewMVC/api/States',
+                    type: 'POST',
+                    data: $("#frmInsert").serialize(),
+                    contentType: 'application/x-www-form-urlencoded',
+                    dataType: 'json',
+                    success: function (response) {
+                        var markup = "<tr><td>" + response.StateID + "</td><td>" + response.StateName + "</td><td>" + response.StateDispName + "</td></tr>";
+                        $("#tblStates tr:nth-child(1)").after(markup);
+                        //$("#tblStates tr").last().after(markup);
+                        $("#new_stateID").val("");
+                        $("#new_stateName").val("");
+                        $("#new_statedispName").val("");
+
+                    },
+                    error: function () {
+                        alert("error occurred");
+                    },
+                    complete: function () {
+
+                    }
+                });
+
+            });
+
+            $("#StateName").change(function () {
+                var StateName = $(this).val();
+                var data = { state_name: StateName };
+                $.ajax({
+                    url: 'http://localhost/NewMVC/home/GetStateByName',
+                    type: 'POST',
+                    data: JSON.stringify(data),
+                    contentType: 'application/json',
+                    dataType: 'json',
+                    success: function (response) {
+                        $("#lblStateID").html(response.StateID);
+                        $("#lblStateName").html(response.StateName);
+                        $("#lblDescription").html(response.StateDispName);
+                        $("#modalSearchResult").modal('toggle');
+                    },
+                    error: function (err) {
+                        alert(err);
+                    }
+
+                });
+
+            });
+
+        });
+
+    </script>
+
+</body>
+</html>

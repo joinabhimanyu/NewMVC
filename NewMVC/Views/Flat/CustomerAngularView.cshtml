@@ -1,0 +1,209 @@
+﻿@{
+    Layout = null;
+    ViewBag.title = "Customer Page";
+}
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.title</title>
+    <link href='http://fonts.googleapis.com/css?family=Indie+Flower' rel='stylesheet' type='text/css' />
+
+    @Styles.Render("~/Content/css/frameworks")
+    @*    @Styles.Render("~/Content/flat-ui")*@
+    @Styles.Render("~/Content/css/Animate")
+
+
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" />
+
+    <link rel="shortcut icon" href="~/img/favicon.ico" />
+
+    <!-- Angulars Material CSS now available via Google CDN; version 0.8 used here -->
+   @* <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/0.8.3/angular-material.min.css">*@
+
+    <!-- default themes and core styles -->
+    <link rel="stylesheet" href="bower_components/angular-material/angular-material.css" />
+
+    <link rel="stylesheet" href="~/bower_components/bootstrap-material-design/dist/css/material.css" />
+    <link rel="stylesheet" href="~/bower_components/bootstrap-material-design/dist/css/ripples.css" />
+    <link rel="stylesheet" href="~/bower_components/bootstrap-material-design/dist/css/material-fullpalette.css" />
+    <link rel="stylesheet" href="~/bower_components/bootstrap-material-design/dist/css/roboto.css" />
+
+    <!-- extra, overriding theme files -->
+    @*<link rel="stylesheet" href="bower_components/angular-material/themes/indigo-theme.css">*@
+
+    <!-- Polymer files -->
+
+    @*    <script type="text/javascript" src="~/bower_components/webcomponentsjs/webcomponents.min.js"></script>
+    <link rel="import" href="~/elements/my-element.html" />*@
+
+
+    <style type="text/css">
+        .container {
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        #visible-row {
+            -webkit-transition: 1s linear all; /* Chrome */
+            -moz-transition: 1s linear all;
+            -o-transition: 1s linear all;
+            transition: 1s linear all;
+        }
+
+        .row {
+            margin-top: 20px;
+        }
+
+        .selected {
+            background-color: lightblue;
+        }
+
+        /*Material Design Styles*/
+
+        .app-content {
+            width: 100%;
+        }
+
+        form {
+            padding: 10px 20px 30px 25px;
+        }
+
+        md-input-group.long > input {
+            width: 100%;
+        }
+
+        md-card {
+            margin: 0 30px 25px 30px;
+        }
+
+    </style>
+
+</head>
+
+<body data-ng-app="CustomerAngularMod">
+    <div class="container">
+
+        <div data-ng-view=""></div>
+
+
+        @Scripts.Render("~/bundles/jquery")
+
+        @Scripts.Render("~/bundles/js/frameworks")
+        @Scripts.Render("~/bundles/flat-ui")
+        <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
+        @*<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/wow/1.0.3/wow.min.js"></script>*@
+
+        @* @Scripts.Render("~/bundles/angularjs")*@
+
+        <script type="text/javascript" src="~/bower_components/bootstrap-material-design/dist/js/material.js"></script>
+        <script type="text/javascript" src="~/bower_components/bootstrap-material-design/dist/js/ripples.js"></script>
+
+        <!-- Angular JS files -->
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.14/angular.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.14/angular-route.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.15/angular-resource.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.6/angular-animate.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.6/angular-aria.min.js"></script>
+
+        <!-- Angular Material Javascript now available via Google CDN; version 0.8 used here -->
+        <script src="https://ajax.googleapis.com/ajax/libs/angular_material/0.8.3/angular-material.min.js"></script>
+
+        <script type="text/javascript" src="~/Scripts/app/services/CustomerAngularService.js"></script>
+        <script type="text/javascript" src="~/Scripts/app/services/MaterialService.js"></script>
+        <script type="text/javascript" src="~/Scripts/app/factory/CustomerAngularFactory.js"></script>
+        <script type="text/javascript" src="~/Scripts/app/controllers/CustomerAngularController.js"></script>
+        <script type="text/javascript" src="~/Scripts/app/directives/directiveHelloWorld.js"></script>
+        <script type="text/javascript" src="~/Scripts/app/directives/directiveMyElement.js"></script>
+        <script type="text/javascript" src="~/Scripts/app/modules/CustomerAngularMod.js"></script>
+
+
+        <!-- Directive Templates -->
+
+        <script type="text/ng-template" id="helloWorld.html">
+
+            <div class="panel panel-success">
+        <div class="panel-heading">Custom Directive</div>
+        <div class="panel-body">
+            <div class="p" id="visible-row">
+                <h2 id="directive-header"></h2>
+                <h4>Directives are fun.</h4>
+            </div>
+        </div>
+    </div>
+
+        </script>
+
+        <script type="text/ng-template" id="jumbo.html">
+
+            <div class='jumbotron' id='first-jumbo'>
+                <h1>Heading</h1>
+                <p>This is jumbotron.{{id}}</p>
+            </div>
+            <div class='row'>
+                <button type='button' id='btnChangeJumboText' class='btn btn-block btn-lg btn-success' data-ng-click='changeText();'>Change Text</button>
+            </div>
+
+        </script>
+
+         @*firstModal Dialog*@
+
+    <script type="text/ng-template" id="dialog1.tmpl.html">
+
+<md-dialog aria-label="Mango (Fruit)">
+  <md-content class="sticky-container">
+    <md-subheader class="md-sticky-no-effect">Mango (Fruit)</md-subheader>
+    <div class="dialog-content">
+      <p>
+        The mango is a juicy stone fruit belonging to the genus Mangifera, consisting of numerous tropical fruiting trees, cultivated mostly for edible fruit. The majority of these species are found in nature as wild mangoes. They all belong to the flowering plant family Anacardiaceae. The mango is native to South and Southeast Asia, from where it has been distributed worldwide to become one of the most cultivated fruits in the tropics.
+      </p>
+      <img style="margin: auto; max-width: 100%;" alt="Lush mango tree" src="http://thenextweb.com/wp-content/blogs.dir/1/files/2015/03/angularjs.jpeg">
+      <p>
+        The highest concentration of Mangifera genus is in the western part of Malesia (Sumatra, Java and Borneo) and in Burma and India. While other Mangifera species (e.g. horse mango, M. foetida) are also grown on a more localized basis, Mangifera indica—the "common mango" or "Indian mango"—is the only mango tree commonly cultivated in many tropical and subtropical regions.
+      </p>
+      <p>
+        It originated in Indian subcontinent (present day India and Pakistan) and Burma. It is the national fruit of India, Pakistan, and the Philippines, and the national tree of Bangladesh. In several cultures, its fruit and leaves are ritually used as floral decorations at weddings, public celebrations, and religious ceremonies.
+      </p>
+    </div>
+  </md-content>
+  <div class="md-actions" layout="row">
+    <md-button href="http://en.wikipedia.org/wiki/Mango" target="_blank" hide show-md>
+      More on Wikipedia
+    </md-button>
+    <span flex></span>
+    <md-button ng-click="answer('not useful')">
+     Not Useful
+    </md-button>
+    <md-button ng-click="answer('useful')" class="md-primary">
+      Useful
+    </md-button>
+  </div>
+</md-dialog>
+
+    </script>
+
+    </div>
+
+   
+
+    <!-- Document ready script -->
+
+        <script type="text/javascript">
+
+            $(document).ready(function () {
+                //new WOW().init();
+                $.material.init();
+            });
+
+        </script>
+
+</body>
+</html>

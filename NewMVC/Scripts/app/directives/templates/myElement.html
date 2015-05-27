@@ -1,0 +1,31 @@
+﻿<div class="row" id="content-row">
+    <div class="form-group">
+        <div class="col-md-6">
+            <ul class="list-inline">
+                <li>
+                    <input type="text" ng-model="owner" class="form-control" placeholder="Enter owner" />
+                </li>
+                <li>
+                    <input type="text" ng-model="color" class="form-control" placeholder="Enter color" />
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="jumbotron">
+        <h2>Hello {{owner}}, Polymer element</h2>
+        <p class="well" ng-style="{color: color}">
+            Polymer provides extra goodies for creating declarative, souped-up custom elements. We call these “Polymer elements”. From the outside they look just like any other DOM element, but inside they’re filled with handy features like two-way data binding and other bits of Polymer magic. These features make it easy to build complex components with much less code.
+        </p>
+    </div>
+</div>
+<div class="row">
+    <ul class="list-group">
+        <li class="list-group-item">
+            <button type="button" id="btnHide" ng-click="hide()" class="btn btn-lg btn-block btn-info">Hide</button>
+        </li>
+        <li class="list-group-item">
+            <button type="button" id="btnShow" ng-click="show()" class="btn btn-lg btn-block btn-infor">Show</button>
+        </li>
+    </ul>
+</div>
+

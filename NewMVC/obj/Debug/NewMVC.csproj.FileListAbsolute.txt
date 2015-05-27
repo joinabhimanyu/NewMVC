@@ -1,0 +1,12 @@
+C:\Users\u3696174\Documents\Visual Studio 2012\Projects\NewMVC\NewMVC\bin\NewMVC.dll
+C:\Users\u3696174\Documents\Visual Studio 2012\Projects\NewMVC\NewMVC\bin\NewMVC.pdb
+C:\Users\u3696174\Documents\Visual Studio 2012\Projects\NewMVC\NewMVC\bin\Antlr3.Runtime.dll
+C:\Users\u3696174\Documents\Visual Studio 2012\Projects\NewMVC\NewMVC\bin\WebGrease.dll
+C:\Users\u3696174\Documents\Visual Studio 2012\Projects\NewMVC\NewMVC\obj\Debug\NewMVC.csprojResolveAssemblyReference.cache
+C:\Users\u3696174\Documents\Visual Studio 2012\Projects\NewMVC\NewMVC\obj\Debug\NewMVC.dll
+C:\Users\u3696174\Documents\Visual Studio 2012\Projects\NewMVC\NewMVC\obj\Debug\NewMVC.pdb
+C:\Users\u3696174\Documents\Visual Studio 2012\Projects\NewMVC\NewMVC\bin\EntityFramework.SqlServer.dll
+C:\Users\u3696174\Documents\Visual Studio 2012\Projects\NewMVC\NewMVC\bin\System.Web.Helpers.dll
+C:\Users\u3696174\Documents\Visual Studio 2012\Projects\NewMVC\NewMVC\bin\Antlr3.Runtime.pdb
+C:\Users\u3696174\Documents\Visual Studio 2012\Projects\NewMVC\NewMVC\bin\EntityFramework.SqlServer.xml
+C:\Users\u3696174\Documents\Visual Studio 2012\Projects\NewMVC\NewMVC\bin\System.Web.Helpers.xml

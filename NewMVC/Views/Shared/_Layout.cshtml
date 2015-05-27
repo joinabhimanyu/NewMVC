@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.title</title>
+    <link href='http://fonts.googleapis.com/css?family=Indie+Flower' rel='stylesheet' type='text/css' />
+
+    @Styles.Render("~/Content/themes/base/css")
+    @Styles.Render("~/Content/css/frameworks")
+    
+    @RenderSection("styles", required: true)
+
+</head>
+<body>
+    @RenderBody()
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/js/frameworks")
+    @Scripts.Render("~/bundles/jqueryui")
+
+    @RenderSection("scripts", required: true)
+</body>
+</html>

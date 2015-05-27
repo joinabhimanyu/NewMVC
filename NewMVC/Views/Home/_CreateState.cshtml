@@ -1,0 +1,16 @@
+﻿@model NewMVC.Models.StateMaster
+
+@using (Html.BeginForm("Create", "Home", FormMethod.Post, new {@class="form-horizontal"}))
+{
+    <div class="form-group">
+        @Html.TextBoxFor(m => m.StateID, new { @class="form-control", placeholder="Enter StateID" })
+    </div>
+    <div class="form-group">
+        @Html.TextBoxFor(m => m.StateName, new { @class="form-control", placeholder="Enter State Name" })
+    </div>
+    <div class="form-group">
+        @Html.TextBoxFor(m => m.StateDispName, new { @class="form-control", placeholder="Enter State Display Name" })
+    </div>
+    <input type="submit" value="Submit" class="btn btn-primary" />
+}
+

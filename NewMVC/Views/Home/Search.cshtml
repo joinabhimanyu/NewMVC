@@ -1,0 +1,47 @@
+﻿@model NewMVC.Models.StateMaster
+
+@{
+    Layout = null;
+    Page.Title = "Search State Details";
+    Page.Subtitle = "Details of state search in the table";
+}
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@Page.Title</title>
+
+    <link href='http://fonts.googleapis.com/css?family=Indie+Flower' rel='stylesheet' type='text/css' />
+
+    @Styles.Render("~/Content/css/frameworks")
+</head>
+<body>
+    <div class="container">
+        <div class="row well">
+            <h2>State Details</h2>
+            <table class="table table-bordered table-condensed">
+                <tbody>
+                    <tr>
+                        <td><h3>@Html.LabelFor(m => m.StateID)</h3></td>
+                        <td>@Html.DisplayFor(m => m.StateID)</td>
+                    </tr>
+                    <tr>
+                        <td><h3>@Html.LabelFor(m => m.StateName)</h3></td>
+                        <td>@Html.DisplayFor(m => m.StateName)</td>
+                    </tr>
+                    <tr>
+                        <td><h3>@Html.LabelFor(m => m.StateDispName)</h3></td>
+                        <td>@Html.DisplayFor(m => m.StateDispName)</td>
+                    </tr>
+                    
+                </tbody>
+            </table>
+            <form method="post" action="@Url.Action("Back")" class="form-inline">
+                <input type="submit" class="btn btn-primary" value="Go Back" />
+            </form>
+        </div>
+    </div>
+</body>
+</html>

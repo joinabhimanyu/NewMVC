@@ -1,0 +1,230 @@
+﻿@model IEnumerable<NewMVC.Models.Order>
+
+@{
+    Layout = "../Shared/_Layout.Phone.cshtml";
+    ViewBag.title = "OrdersList.Phone.cshtml";
+    ViewBag.message = "Orders Page";
+    ViewBag.ShowBackButton = true;
+    ViewBag.ShowHomeButton = true;
+}
+
+
+    <div data-role="content" data-theme="b" id="OrdersList">
+    <div data-role="collapsible-set">
+        <div data-role="collapsible" data-collapsed="false">
+            <h2>List of Orders</h2>
+            <div class="ui-grid-b">
+                <div class="ui-block-a">
+                    <h3>Order Details</h3>
+                </div>
+                <div class="ui-block-b">
+                    <h3>@Html.DisplayNameFor(m => m.First().Customer_ID)</h3>
+                </div>
+                <div class="ui-block-c">
+                    <h3>@Html.DisplayNameFor(m => m.First().Order_Date)</h3>
+                </div>
+                @foreach (var item in Model)
+                {
+                    <div class="ui-block-a">
+                        <a href="@Url.Action("GetOrderDetails", new {id=@item.Order_ID})" class="linkOrderDetails" data-transition="flow" data-ajax="true">
+                                        <img src="@Url.Content("~/Content/images/icons-png/bullets-white.png")" class="ui-li-icon" />
+                                    </a>
+                    </div>
+                    <div class="ui-block-b">
+                        @Html.Label(item.Customer_ID.ToString().Trim())
+                    </div>
+                    <div class="ui-block-c">
+                        @Html.Label(item.Order_Date.ToString().Trim())
+                    </div>
+                }
+            </div>
+            @*<table data-role="table" class="ui-responsive">
+                <thead>
+                    <tr>
+                        <th>Order Details</th>
+                        <th>@Html.DisplayNameFor(m => m.First().Ship_Name)</th>
+                        <th>@Html.DisplayNameFor(m => m.First().Ship_Address)</th>
+                        <th>@Html.DisplayNameFor(m => m.First().Ship_City)</th>
+                        <th>@Html.DisplayNameFor(m => m.First().Ship_Region)</th>
+                        <th>@Html.DisplayNameFor(m => m.First().Ship_Postal_Code)</th>
+                        <th>@Html.DisplayNameFor(m => m.First().Ship_Country)</th>
+                        <th>@Html.DisplayNameFor(m => m.First().Ship_Via)</th>
+                        <th>@Html.DisplayNameFor(m => m.First().Order_Date)</th>
+                        <th>@Html.DisplayNameFor(m => m.First().Required_Date)</th>
+                        <th>@Html.DisplayNameFor(m => m.First().Shipped_Date)</th>
+                        <th>@Html.DisplayNameFor(m => m.First().Freight)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                                <td>
+                                    <a href="@Url.Action("GetOrderDetails", new {id=@item.Order_ID})" class="linkOrderDetails" data-transition="flow">
+                                        <img src="@Url.Content("~/Content/images/icons-png/bullets-white.png")" class="ui-li-icon" />
+                                    </a>
+                                </td>
+                                <td>
+                                    @{
+                            if (item.Ship_Name != null)
+                            {
+                                        @Html.Label(item.Ship_Name.ToString().Trim())
+                            }
+                                    }
+                                </td>
+                                <td>
+                                    @{
+                            if (item.Ship_Address != null)
+                            {
+                                        @Html.Label(item.Ship_Address.ToString().Trim())
+                            }
+                                    }
+                                </td>
+                                <td>
+                                    @{
+                            if (item.Ship_City != null)
+                            {
+                                        @Html.Label(item.Ship_City.ToString().Trim())
+                            }
+                                    }
+                                </td>
+                                <td>
+                                    @{
+                            if (item.Ship_Region != null)
+                            {
+                                        @Html.Label(item.Ship_Region.ToString().Trim())
+                            }
+                                    }
+                                </td>
+                                <td>
+                                    @{
+                            if (item.Ship_Postal_Code != null)
+                            {
+                                        @Html.Label(item.Ship_Postal_Code.ToString().Trim())
+                            }
+                                    }
+                                </td>
+                                <td>
+                                    @{
+                            if (item.Ship_Country != null)
+                            {
+                                        @Html.Label(item.Ship_Country.ToString().Trim())
+                            }
+                                    }
+                                </td>
+                                <td>
+                                    @{
+                            if (item.Ship_Via != null)
+                            {
+                                        @Html.Label(item.Ship_Via.ToString().Trim())
+                            }
+                                    }
+                                </td>
+                                <td>
+                                    @{
+                            if (item.Order_Date != null)
+                            {
+                                        @Html.Label(item.Order_Date.ToString().Trim())
+                            }
+                                    }
+                                </td>
+                                <td>
+                                    @{
+                            if (item.Required_Date != null)
+                            {
+                                        @Html.Label(item.Required_Date.ToString().Trim())
+                            }
+                                    }
+                                </td>
+                                <td>
+                                    @{
+                            if (item.Shipped_Date != null)
+                            {
+                                        @Html.Label(item.Shipped_Date.ToString().Trim())
+                            }
+                                    }
+                                </td>
+                                <td>
+                                    @{
+                            if (item.Freight != null)
+                            {
+                                        @Html.Label(item.Freight.ToString().Trim())
+                            }
+                                    }
+                                </td>
+
+                            </tr>
+                    }
+                </tbody>
+            </table>*@
+        </div>
+    </div>
+
+
+   
+
+</div>
+
+<a id="anchOrders" href="#pnlOrders" class="ui-btn ui-shadow ui-corner-all ui-btn-inline ui-btn-icon-left ui-icon-bars" style="display:none;"></a>
+<div data-role="panel" id="pnlOrders" data-display="overlay">
+    <table data-role="table" class="ui-responsive">
+            <thead>
+                <tr>
+                    <th>Order ID</th>
+                    <th>Product ID</th>
+                    <th>Unit Price</th>
+                    <th>Quantity</th>
+                    <th>Discount</th>
+                </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+</div>
+
+ @section scripts {
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            //alert('orders loaded');
+            //$(".linkOrderDetails").click(function (e) {
+            //    e.preventDefault();
+            //    var url = $(this).attr('href');
+
+            //    $.ajax({
+            //        url: url,
+            //        type: 'GET',
+            //        dataType: 'json',
+            //        success: function (response) {
+            //            var result = '';
+            //            $("#pnlOrders table tbody").empty();
+            //            $.each(response, function (index, value) {
+            //                result = '<tr>';
+            //                result += '<td><label>' + value.Order_ID + '</label></td>';
+            //                result += '<td><label>' + value.Product_ID + '</label></td>';
+            //                result += '<td><label>' + value.Unit_Price + '</label></td>';
+            //                result += '<td><label>' + value.Quantity + '</label></td>';
+            //                result += '<td><label>' + value.Discount + '</label></td>';
+            //                result += '</tr>';
+            //                $("#pnlOrders table tbody").append(result);
+            //                result = '';
+            //            });
+            //            $("#anchOrders").click();
+            //            //$.mobile.changePage('#dgOrdersResult', { transition: 'slidefade', role: 'dialog' });
+            //        },
+            //        error: function (xhr, ajaxOptions, thrownError) {
+            //            alert(xhr.status + " " + thrownError);
+            //        }
+            //    });
+            //});
+
+        });
+
+    </script>
+
+}
+
+
+

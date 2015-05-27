@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost/WCFUlipService/UlipService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/WCFUlipService" />
+  <xs:import schemaLocation="http://localhost/WCFUlipService/UlipService.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:import schemaLocation="http://localhost/WCFUlipService/UlipService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/UlipBL" />
+  <xs:element name="GetData">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="value" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDataResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetDataResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDataUsingDataContract">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/WCFUlipService" minOccurs="0" name="composite" nillable="true" type="q1:CompositeType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDataUsingDataContractResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/WCFUlipService" minOccurs="0" name="GetDataUsingDataContractResult" nillable="true" type="q2:CompositeType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetIllustrationHeaders">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetIllustrationHeadersResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GetIllustrationHeadersResult" nillable="true" type="q3:ArrayOfstring" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetIllustrationGridDtls">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="policy_term" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="annual_prem" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="sum_assurred" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="topup_prem" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="rider_prem" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="typeof_request" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="illustration_no" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="annual_interest" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetIllustrationGridDtlsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/UlipBL" minOccurs="0" name="GetIllustrationGridDtlsResult" nillable="true" type="q4:ArrayOfIllustrationGridDtls" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SaveIllustrationDtls">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="customer_id" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="customer_name" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="product_code" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="product_name" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="entry_age" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="policy_term" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="gender" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="times_sa" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="annual_prem" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="sum_assurred" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="topup_prem" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="rider_prem" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SaveIllustrationDtlsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="SaveIllustrationDtlsResult" nillable="true" type="q5:ArrayOfstring" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CustomerIdLOVPopulate">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="param1" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="param2" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="param3" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="param4" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="param5" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CustomerIdLOVPopulateResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/UlipBL" minOccurs="0" name="CustomerIdLOVPopulateResult" nillable="true" type="q6:ArrayOfCustomeridLOVResult" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ExportPdf">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="proposer_name" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="product_name" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="entry_age" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="gender" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="policy_term" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="annual_prem" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="base_suminsured_percent" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="base_suminsured" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="rider_suminsured_percent" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="rider_suminsured" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="topup_prem" nillable="true" type="xs:string" />
+        <xs:element xmlns:q7="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="list_rates" nillable="true" type="q7:ArrayOfstring" />
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/UlipBL" minOccurs="0" name="grid1_result" nillable="true" type="q8:ArrayOfIllustrationGridDtls" />
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/UlipBL" minOccurs="0" name="grid2_result" nillable="true" type="q9:ArrayOfIllustrationGridDtls" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ExportPdfResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ExportPdfResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PolicyNoLOVPopulate">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="param1" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="param2" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="param3" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="param4" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="param5" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PolicyNoLOVPopulateResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/UlipBL" minOccurs="0" name="PolicyNoLOVPopulateResult" nillable="true" type="q10:ArrayOfPolicynoLOVResult" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetViewDtls">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="policy_no" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetViewDtlsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/UlipBL" minOccurs="0" name="GetViewDtlsResult" nillable="true" type="q11:PolicyServicingViewDtls" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetProceedDtls">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="txt_policy_no" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ref_no" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="num_policy_no" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="new_equity_percent" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="new_balance_percent" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="new_debit_percent" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="topup_amt" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="txt_request_type" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="txt_process_name" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="policy_status" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="policy_eff_fromdate" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="actual_withdrawl_amt" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="prem_payment_mode" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="max_withdrawl_amt" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetProceedDtlsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/UlipBL" minOccurs="0" name="GetProceedDtlsResult" nillable="true" type="q12:ArrayOfPolicyServicingProceedDtls" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

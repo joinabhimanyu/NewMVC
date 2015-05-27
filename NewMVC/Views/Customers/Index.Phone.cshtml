@@ -1,0 +1,100 @@
+﻿@model IEnumerable<NewMVC.Models.Customer>
+
+@{
+    Layout = "../Shared/_Layout.Phone.cshtml";
+    ViewBag.title = "Index.Phone.cshtml";
+    ViewBag.message = "Customers Page";
+    ViewBag.ShowBackButton = true;
+    ViewBag.ShowHomeButton = true;
+
+    var company_name = Model.Select(m => m.Company_Name).Distinct().ToList<string>();
+    var city = Model.Select(m => m.City).Distinct().ToList<string>();
+    var country = Model.Select(m => m.Country).Distinct().ToList<string>();
+    
+}
+
+
+             <div data-role="content" data-theme="b" id="IndexCustomers">
+            <div data-role="collapsible-set">
+                <div data-role="collapsible" data-collapsed="true">
+                    <h2>List of Customers</h2>
+                    <div class="ui-grid-b">
+                        <div class="ui-block-a">
+                            <h3>Orders</h3>
+                        </div>
+                        <div class="ui-block-b">
+                            <h3>Company Name</h3>
+                        </div>
+                        <div class="ui-block-c">
+                            <h3>Contact Name</h3>
+                        </div>
+                        @foreach (var item in Model)
+                        {
+                            <div class="ui-block-a">
+                                <a href="@Url.Action("OrdersList", new { customerID=@item.Customer_ID })" class="linkGetOrder" data-transition="flow" data-ajax="true">
+                                    <img src="@Url.Content("~/Content/images/icons-png/bullets-white.png")" class="ui-li-icon" />
+                                </a>
+                            </div>
+                            <div class="ui-block-b">
+                                <h4>@item.Company_Name</h4>
+                            </div>
+                            <div class="ui-block-c">
+                                <h4>@item.Contact_Name</h4>
+                            </div>
+                        }
+                    </div>              
+                </div>
+                <div data-role="collapsible" data-collapsed="false">
+                    <h2>Search by Company & City</h2>
+                    <div class="ui-grid-a">
+                        <div class="ui-block-a">
+                            <select id="drpCompany" name="drpCompany" data-native-menu="false" data-icon="grid" data-iconpos="left">
+                                @foreach (var item in company_name)
+                                {
+                                    <option>@item.Trim()</option>
+                                }
+                            </select>
+                        </div>
+                        <div class="ui-block-b">
+                            <select id="drpCity" name="drpCity" data-native-menu="false" data-icon="grid" data-iconpos="left">
+                                @foreach (var item in city)
+                                {
+                                    <option>@item.Trim()</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div data-role="collapsible" data-collapsed="true">
+                    <h2>Search by Contact Name</h2>
+                    <form id="frmSearchByName" method="post" action="@Url.Action("SearchCustomerByName")">
+                    <div class="ui-field-contain">
+                        <input type="search" id="autoContactName" name="autoContactName" class="text-box single-line" placeholder="Enter Contact Name" />
+                    </div>
+                    <input type="submit" data-role="button" value="Search" />
+                </form>
+                </div>
+            </div>
+
+           
+
+
+        </div>
+
+
+<a id="anchCustomer" href="#pnlCustomer" class="ui-btn ui-shadow ui-corner-all ui-btn-inline ui-btn-icon-left ui-icon-bars" data-transition="flow" style="display:none;"></a>
+<div data-role="panel" id="pnlCustomer" data-theme="b" data-display="overlay" style="width: 340px;">
+    <div class="ui-content">
+        <div class="ui-grid-a">
+        </div>
+    </div>
+    
+</div>
+       
+
+
+
+
+
+
+

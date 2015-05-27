@@ -1,0 +1,28 @@
+﻿@model NewMVC.Models.Category
+
+@{
+    Layout = "../Shared/_Layout.Phone.cshtml";
+    ViewBag.title = "UpdateCategory.Phone.cshtml";
+    ViewBag.message = "Updaet Category Page";
+    ViewBag.ShowBackButton = true;
+    ViewBag.ShowHomeButton = true;
+    }
+
+<div data-role="content" data-theme="b">
+    @using (Html.BeginForm("Update", "Categories", FormMethod.Post))
+{
+     <div class="ui-field-contain" hidden>
+         @Html.DisplayNameFor(m => m.Category_ID)
+         @Html.TextBoxFor(m => m.Category_ID)
+     </div>
+    <div class="ui-field-contain">
+        @Html.DisplayNameFor(m => m.Category_Name)
+        @Html.TextBoxFor(m => m.Category_Name)
+    </div>
+    <div class="ui-field-contain">
+        @Html.DisplayNameFor(m => m.Description)
+        @Html.TextBoxFor(m => m.Description)
+    </div>
+    <input type="submit" value="Submit" class="ui-btn ui-shadow ui-corner-all" />
+}
+</div>

@@ -1,0 +1,243 @@
+﻿@{
+    Layout = null;
+    ViewBag.title = "Flat-UI Page";
+}
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.title</title>
+    <link href='http://fonts.googleapis.com/css?family=Indie+Flower' rel='stylesheet' type='text/css' />
+
+    @Styles.Render("~/Content/css/frameworks")
+    @Styles.Render("~/Content/flat-ui")
+    @Styles.Render("~/Content/css/Animate")
+
+    <link rel="shortcut icon" href="~/img/favicon.ico" />
+
+    <style type="text/css">
+        .row {
+            margin-top: 10px;
+        }
+
+        .page-header h1 {
+            -moz-animation-delay: 0.3s;
+            -o-animation-delay: 0.3s;
+            -webkit-animation-delay: 0.3s;
+            animation-delay: 0.3s;
+        }
+
+        .tile#tile1 {
+            -moz-animation-delay: 0.7s;
+            -o-animation-delay: 0.7s;
+            -webkit-animation-delay: 0.7s;
+            animation-delay: 0.7s;
+        }
+
+        .tile#tile2 {
+            -moz-animation-delay: 1s;
+            -o-animation-delay: 1s;
+            -webkit-animation-delay: 1s;
+            animation-delay: 1s;
+        }
+
+        .tile#tile3 {
+            -moz-animation-delay: 1.3s;
+            -o-animation-delay: 1.3s;
+            -webkit-animation-delay: 1.3s;
+            animation-delay: 1.3s;
+        }
+
+        .tile#tile4 {
+            -moz-animation-delay: 1.6s;
+            -o-animation-delay: 1.6s;
+            -webkit-animation-delay: 1.6s;
+            animation-delay: 1.6s;
+        }
+
+    </style>
+</head>
+<body data-ng-app="flatIndex">
+
+    <div class="container">
+
+        <div class="page-header" data-ng-controller="first">
+            <a data-animation="animated pulse" href="@Url.Action("Index", "Flat")"><h1 data-animation="animated bounceInDown">{{propBanner.mainBanner}}</h1></a>
+            <small>{{propBanner.subBanner}}</small>
+        </div>
+        <div class="row">
+            <button class="btn btn-block btn-lg btn-inverse">Submit</button>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <select class="form-control select select-primary select-block mbl">
+                    <optgroup label="First">
+                        <option value="0">Item 1</option>
+                        <option value="1">Item 2</option>
+                        <option value="2">Item 3</option>
+                        <option value="3">Item 4</option>
+                    </optgroup>
+                    <optgroup label="Second">
+                        <option value="4">Item 5</option>
+                        <option value="5">Item 6</option>
+                    </optgroup>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <select multiple="multiple" class="form-control multiselect multiselect-info">
+                    <option value="0" selected>Item 1</option>
+                    <option value="1">Item 2</option>
+                    <option value="2">Item 3</option>
+                    <option value="3">Item 4</option>
+                    <option value="4">Item 5</option>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <input name="tagsinput" class="tagsinput" data-role="tagsinput" value="Clean, Fresh, Modern, Unique" />
+            </div>
+            <div class="col-md-3">
+                <div class="tagsinput-primary">
+                    <input name="tagsinput" class="tagsinput" data-role="tagsinput" value="School, Teacher, Colleague" />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div id="slider"></div>
+        </div>
+        <div class="row pbl">
+            <div class="col-md-3">
+                <input type="checkbox" checked data-toggle="switch" id="switch-01" />
+            </div>
+            <div class="col-md-3">
+                <div class="bootstrap-switch-square">
+                    <input type="checkbox" checked data-toggle="switch" id="custom-switch-03" data-on-text="<span class='fui-check'></span>" data-off-text="<span class='fui-cross'></span>" />
+                </div>
+            </div>
+            <div class="col-md-3">
+                <input type="checkbox" checked data-toggle="switch" data-on-color="success" data-off-color="warning" id="custom-switch-06" />
+            </div>
+            <div class="col-md-3">
+                <input type="checkbox" checked data-toggle="switch" data-on-color="warning" data-off-color="info" id="custom-switch-07" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <div class="tile" id="tile1" data-animation="animated bounceInUp">
+                    <img src="@Url.Content("~/img/icons/png/Compas.png")" alt="Compass" class="tile-image big-illustration" data-animation="animated shake" />
+                    <h3 class="tile-title">Web Oriented</h3>
+                    <p>100% convertable to HTML/CSS Layout.</p>
+                    <a class="btn btn-primary btn-large btn-block" href="#">Get Pro</a>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="tile" id="tile2" data-animation="animated bounceInUp">
+                    <img src="@Url.Content("~/img/icons/png/Infinity-Loop.png")" alt="Loop" class="tile-image" data-animation="animated shake" />
+                    <h3 class="tile-title">Easy to Customize</h3>
+                    <p>Vector-based shapes and minimum of layer styles.</p>
+                    <a class="btn btn-primary btn-large btn-block" href="http://designmodo.com/flat">Get Pro</a>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="tile" id="tile3" data-animation="animated bounceInUp">
+                    <img src="@Url.Content("~/img/icons/png/Pensils.png")" alt="Pencils" class="tile-image" data-animation="animated shake" />
+                    <h3 class="tile-title">Color Swatches</h3>
+                    <p>Easy to add or change elements. Makes things cooler.</p>
+                    <a class="btn btn-primary btn-large btn-block" href="http://designmodo.com/flat">Get Pro</a>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="tile" id="tile4" data-animation="animated bounceInUp">
+                    @*<img src="~/img/icons/svg/ribbon.svg" alt="Ribbon" class="tile-hot-ribbon" />*@
+                    <img src="@Url.Content("~/img/icons/png/Chat.png")" alt="Chat" class="tile-image" data-animation="animated shake" />
+                    <h3 class="tile-title">Free for Share</h3>
+                    <p>Your likes, shares and comments helps us.</p>
+                    <a class="btn btn-primary btn-large btn-block" href="http://designmodo.com/flat">Get Pro</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/js/frameworks")
+    @Scripts.Render("~/bundles/flat-ui")
+    @Scripts.Render("~/bundles/angularjs")
+
+    <script type="text/javascript" src="~/Scripts/app/modules/FlatUIIndexMod.js"></script>
+    <script type="text/javascript" src="~/Scripts/app/controllers/flatController.js"></script>
+
+    <script type="text/javascript">
+
+        function doAnimation(elems) {
+            var animEndEv = "webkitAnimationEnd animationend";
+
+            elems.each(function () {
+                var $this = $(this),
+                    $animationType = $(this).data('animation');
+
+                $(this).addClass($animationType).one(animEndEv, function () {
+                    $(this).removeClass($animationType);
+                });
+            });
+        }
+
+        $(document).ready(function () {
+            $("select").select2({
+                dropdownCssClass: 'dropdown-inverse'
+            });
+
+            $('.tile img[data-animation ^= "animated"]').hover(function () {
+                
+                var $this = $(this);
+                doAnimation($this);
+            });
+
+            $(".page-header h1[data-animation ^= 'animated']").hover(function () {
+                
+                var $this = $(this);
+                var animEndEnv = "webkitAnimationEnd animationend";
+                var $animationType = $(".page-header a[data-animation ^= 'animated']").data('animation');
+                
+                $this.addClass($animationType).one(animEndEnv, function () {
+                    $this.removeClass($animationType);
+                });
+
+            });
+
+            (function () {
+                var $slider = $("#slider");
+                if ($slider.length > 0) {
+                    $slider.slider({
+                        min: 1,
+                        max: 5,
+                        value: 3,
+                        orientation: 'horizontal',
+                        range: 'min'
+                    }).addSliderSegments($slider.slider('option').max);
+                };
+
+            })();
+
+            
+            
+        });
+
+        //Bootstrap Switch
+
+        if ($('[data-toggle="switch"]').length) {
+            $('[data-toggle="switch"]').bootstrapSwitch();
+        }
+
+        //Page Header Animation
+        var $pageHeader = $(".page-header").find('h1[data-animation ^= "animated"]');
+        doAnimation($pageHeader);
+
+        //Tiles Animation
+        var $tiles = $(".row").find('.tile[data-animation ^= "animated"]');
+        doAnimation($tiles);
+
+    </script>
+</body>
+</html>

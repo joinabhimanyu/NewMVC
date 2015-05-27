@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="30de7f28-0f39-4214-8bc0-bdd45b019ddc" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost/WCFUlipService/UlipService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="UlipService.xsd" MetadataType="Schema" ID="0acf2bbf-6bb2-4936-afec-2d96dfc436e0" SourceId="1" SourceUrl="http://localhost/WCFUlipService/UlipService.svc?xsd=xsd0" />
+    <MetadataFile FileName="UlipService1.xsd" MetadataType="Schema" ID="6ee01293-cde7-4269-a7b5-9b74b3deb603" SourceId="1" SourceUrl="http://localhost/WCFUlipService/UlipService.svc?xsd=xsd2" />
+    <MetadataFile FileName="UlipService2.xsd" MetadataType="Schema" ID="084a6c45-1332-4374-9b47-15bcfd57264b" SourceId="1" SourceUrl="http://localhost/WCFUlipService/UlipService.svc?xsd=xsd3" />
+    <MetadataFile FileName="UlipService.disco" MetadataType="Disco" ID="e341f14a-4452-4fee-abd5-7e02faf1ba6c" SourceId="1" SourceUrl="http://localhost/WCFUlipService/UlipService.svc?disco" />
+    <MetadataFile FileName="UlipService.wsdl" MetadataType="Wsdl" ID="82c146c0-c247-4bcd-a514-49de03bf2076" SourceId="1" SourceUrl="http://localhost/WCFUlipService/UlipService.svc?wsdl" />
+    <MetadataFile FileName="UlipService3.xsd" MetadataType="Schema" ID="525e4a96-2dbd-4ce1-844e-958f53f6e705" SourceId="1" SourceUrl="http://localhost/WCFUlipService/UlipService.svc?xsd=xsd1" />
+    <MetadataFile FileName="UlipService4.xsd" MetadataType="Schema" ID="a92a7934-7483-4735-abb2-ec66cb121512" SourceId="1" SourceUrl="http://localhost/WCFUlipService/UlipService.svc?xsd=xsd4" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

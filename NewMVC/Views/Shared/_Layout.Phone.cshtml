@@ -1,0 +1,194 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <title>@ViewBag.title</title>
+    <link href='http://fonts.googleapis.com/css?family=Indie+Flower' rel='stylesheet' type='text/css' />
+
+    @*<link rel="stylesheet" type="text/css" href="~/Content/jquery.mobile-1.4.5.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/jquery.mobile.external-png-1.4.5.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/jquery.mobile.icons-1.4.5.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/jquery.mobile.inline-png-1.4.5.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/jquery.mobile.inline-svg-1.4.5.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/jquery.mobile.structure-1.4.5.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/jquery.mobile.theme-1.4.5.css" />*@
+
+    @Styles.Render("~/Content/MobileCSS")
+    
+    @RenderSection("styles", required: false)
+
+</head>
+<body>
+
+    <div data-role="page" class="ui-responsive-panel" data-theme="a">
+        <div data-role="header" data-position="fixed" data-theme="a">
+            <h1>@ViewBag.message</h1>
+            @{
+                bool ShowBackButton = false;
+                bool ShowHomeButton = false;
+                if (ViewBag.ShowBackButton != null && ViewBag.ShowBackButton == true)
+                {
+                    ShowBackButton = true;
+                }
+                if (ViewBag.ShowHomeButton != null && ViewBag.ShowHomeButton == true)
+                {
+                    ShowHomeButton = true;
+                }
+                if (ShowBackButton)
+                {
+                    <a data-rel="back" data-role="button" data-transition="slidefade" data-direction="reverse" data-icon="back">Back</a>
+                }
+                if (ShowHomeButton)
+                {
+                    <a href="@Url.Action("Index")" data-role="button" data-transition="slidefade" data-direction="reverse" data-icon="home">Home</a>
+                }
+                }
+            <nav>
+                @*<ul data-role="listview" data-inset="true">
+                    <li data-role="list-divider">Menu Items</li>
+                    <li>@Html.ActionLink("Home", "Index", "Customers")</li>
+                    <li>@Html.ActionLink("Categories", "Index", "Categories")</li>
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                </ul>*@
+                <div data-role="navbar" data-theme="a" data-icontops="top">
+                    <ul>
+                        <li><a href="@Url.Action("Index", "Customers")" data-icon="home" data-transition="flow" data-ajax="true">Home</a></li>
+                        <li><a href="@Url.Action("Index", "Categories")" data-icon="info" data-transition="flow" data-ajax="true">Categories</a></li>
+                        <li><a href="@Url.Action("Index", "Home") data-icon="check" data-transition="flow" data-ajax="false">Other Home</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        @RenderBody()
+
+        @RenderSection("scripts", required: false)
+    </div>
+
+    
+    <!-- dialog Search Result -->
+
+    @*<div data-role="dialog" id="dgSearchResult" data-theme="a" class="ui-content">
+        <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+        <table data-role="table" class="ui-responsive">
+            <thead>
+                <tr>
+                    <th>Orders</th>
+                    <th>Company Name</th>
+                    <th>Contact Name</th>
+                </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+</div>*@
+
+
+
+
+    @Scripts.Render("~/bundles/jquery")
+    
+    @Scripts.Render("~/bundles/MobileJS")
+
+    
+    <script type="text/javascript">
+
+        function BindResult(response) {
+            var row_data = '';
+            $("#pnlCustomer .ui-grid-a").empty();
+            $.each(response, function (index, value) {
+                row_data = "<div class='ui-block-a'><h3>Orders</h3></div>";
+                row_data += "<div class='ui-block-b'>";
+                row_data += "<a href='@Url.Action("OrdersList")?customerID=" + value.Customer_ID + "' data-transition='flow' data-ajax='true'><img src='@Url.Content("~/Content/images/icons-png/bullets-white.png")' class='ui-li-icon' /></a>";
+                row_data += "</div>";
+                row_data += "<div class='ui-block-a'><h3>Company Name</h3></div>";
+                row_data += "<div class='ui-block-b'>";
+                row_data += "<h4>" + value.Company_Name + "</h4>";
+                row_data += "</div>";
+                row_data += "<div class='ui-block-a'><h3>Contact Name</h3></div>";
+                row_data += "<div class='ui-block-b'>";
+                row_data += "<h4>" + value.Contact_Name + "</h4>";
+                row_data += "</div>";
+                $("#pnlCustomer .ui-grid-a").append(row_data);
+                row_data = '';
+            });
+            //$.mobile.changePage('#dgSearchResult', {transition: 'slidefade', role: 'dialog'});
+            $("#anchCustomer").click();
+        }
+
+        $(document).ready(function () {
+
+            //alert('Index Customer loaded');
+
+            $("#drpCompany").change(function () {
+                var company = $(this).val();
+                var data = { company: company };
+                $.ajax({
+                    url: '@Url.Action("SearchCustomerByCompany")',
+                    type: 'POST',
+                    data: JSON.stringify(data),
+                    contentType: 'application/json',
+                    dataType: 'json',
+                    success: function (response) {
+                        BindResult(response);
+                    },
+                    error: function (xhr, ajaxOptions, thrownError) {
+                        alert(xhr.status + " " + thrownError);
+                    }
+                });
+
+            });
+
+            $("#drpCity").change(function () {
+                var city = $(this).val();
+                var data = { city: city };
+                $.ajax({
+                    url: '@Url.Action("SearchCustomerByCity")',
+                    type: 'POST',
+                    data: JSON.stringify(data),
+                    contentType: 'application/json',
+                    dataType: 'json',
+                    success: function (response) {
+                        BindResult(response);
+                    },
+                    error: function (xhr, ajaxOptions, thrownError) {
+                        alert(xhr.status + " " + thrownError);
+                    }
+                });
+            });
+
+
+
+            $("#frmSearchByName").submit(function (e) {
+                e.preventDefault();
+                var name = $("#autoContactName").val();
+                var data = { name: name };
+                var url = $("#frmSearchByName").attr('action');
+                if (!name) {
+                    alertify.error("Please enter contact name");
+                }
+                else {
+                    $.ajax({
+                        url: url,
+                        type: 'POST',
+                        data: JSON.stringify(data),
+                        contentType: 'application/json',
+                        dataType: 'json',
+                        success: function (response) {
+                            BindResult(response);
+                        },
+                        error: function (xhr, ajaxOptions, thrownError) {
+                            alert(xhr.status + " " + thrownError);
+                        }
+                    });
+                }
+            });
+
+        });
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,113 @@
+﻿<div class="container">
+    <div class="row">
+        <div class="form-group">
+            <input type="text" class="form-control" data-ng-model="search_string" placeholder="Enter Company Name" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2">
+            <div class="form-group">
+                <input type="color" class="form-control" data-ng-model="color_directive" />
+            </div>
+        </div>
+        <div class="col-md-2">
+            <button type="button" id="btnShow" data-ng-click="showHide();" class="btn btn-block btn-lg btn-success">Show/Hide</button>
+        </div>
+        <div class="col-md-2">
+            <button type="button" id="btnJumbotron" data-ng-click="showJumbotron();" class="btn btn-block btn-lg btn-success">Show Jumbotron</button>
+        </div>
+    </div>
+    <div class="row">
+        <div data-hello-world color="color_directive" shown="showRow" jumbo="makeJumbotron"></div>
+    </div>
+    <div class="row">
+        <table class="table table-responsive table-bordered">
+            <thead>
+                <tr>
+                    <th>Customer ID</th>
+                    <th>Company Name</th>
+                    <th>Contact Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr data-ng-repeat="customer in customers | filter: search_string" data-ng-class="{selected: $index == selectedRow}" data-ng-click="selectRow($index)">
+
+                    <td>
+                        <a href="#/customer/{{customer.Customer_ID}}">{{customer.Customer_ID}}</a>
+                    </td>
+                    <td>{{customer.Company_Name}}</td>
+                    <td>{{customer.Contact_Name}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="row">
+        <div my-element="" color="red" owner="somebody"></div>
+    </div>
+
+    <div class="row">
+        <md-content>
+            <section layout="row" layout-sm="column" layout-align="center center">
+                <ul class="list-inline">
+                    <li>
+                        <md-button class="md-raised">Button</md-button>
+                    </li>
+                    <li>
+                        <md-button class="md-raised md-primary">Primary</md-button>
+                    </li>
+                    <li>
+                        <md-button ng-disabled="true" class="md-raised md-primary">Disabled</md-button>
+                    </li>
+                    <li>
+                        <md-button class="md-raised md-warn">Warn</md-button>
+                    </li>
+                    <li>
+                        <div class="label">Raised</div>
+                    </li>
+                    <li>
+                        <md-checkbox ng-model="data.cb1" aria-label="Checkbox 1">
+                            Checkbox 1: {{data.cb1}}
+                        </md-checkbox>
+                    </li>
+                    <li>
+                        <md-button class="md-primary" ng-click="showDialog($event)">Show Alert</md-button>
+                    </li>
+                </ul>           
+            </section>
+            <section layout="row" layout-sm="column" layout-align="center center">
+                <div class="row">
+                    <h4>Indeterminate Progress</h4>
+                    <p>
+                        For operations where the user is asked to wait a moment while something finishes up, and it’s not necessary to expose what's happening behind the scenes and how long it will take, use an indeterminate indicator.
+                    </p>
+                </div>
+                    
+                <div layout="row" layout-sm="column" layout-align="space-around">
+                    <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+                </div>
+            </section>
+            <div layout="row">
+                <md-switch aria-label="Finished?">
+                    Finished ?
+                </md-switch>
+                <md-switch md-no-ink aria-label="No Ink Effects">
+                    No Ink Effects
+                </md-switch>
+                <md-switch ng-disabled="true" aria-label="Disabled">
+                    Disabled
+                </md-switch>
+            </div>
+        </md-content>
+    </div>
+
+</div>
+
+<!--<div class="container wow bounceInUp" id="reveal-container" style="margin-top: 300px;">
+    <div class="row">
+        <div class="jumbotron">
+            <h1>Wow.js</h1>
+            <p>Revealing content with Wow.js and Animate.css. Wow is fun.</p>
+        </div>
+    </div>
+</div>-->

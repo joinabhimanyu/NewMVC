@@ -1,0 +1,313 @@
+﻿@model IEnumerable<NewMVC.Models.Category>
+
+@{
+    Layout = "../Shared/_Layout.cshtml";
+    ViewBag.message = "Categories Page";
+}
+
+
+@section styles {
+    <style type="text/css">
+        body {
+            background-color: white;
+            background-position: center;
+            background-repeat: no-repeat;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+}
+    
+    <div class="container">
+
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="@Url.Action("Index")">
+                        <img src="~/Content/Image/homelinkimg1.png" alt="Home" />
+                    </a>
+                </div>
+                <div class="collapse navbar-collapse" id="menu-nav">
+                    <ul class="nav navbar-nav">
+                        <li><a href="#" data-toggle="modal" data-target="#modalCreate">Create New State</a></li>
+                        <li><a href="@Url.Action("Index", "Customers")">Customers Page</a></li>
+                        <li><a href="#" data-toggle="modal" data-target="#modalArt">Show Art</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="row well">
+            <div class="col-md-6">
+                <form class="form-inline">
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="txtSearch" placeholder="Enter Category ID" />
+                    </div>
+                    <button type="submit" class="btn btn-success" id="btnSearch">Search</button>
+                </form>
+            </div>
+            <div class="col-md-6">
+                <select id="CategoryName" class="selectpicker" style="width: auto;">
+                    @foreach (var item in Model)
+                    {
+                        <option>@item.Category_Name</option>
+                    }
+                </select>
+            </div>
+        </div>
+
+        <div class="row">
+            <table class="table table-bordered table-condensed" id="tblCategory">
+                <thead>
+                    <tr>
+                        <th>Category ID</th>
+                        <th>Category Name</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@Html.Label(item.Category_ID.ToString().Trim())</td>
+                            <td>@Html.Label(item.Category_Name)</td>
+                            <td>@Html.Label(item.Description)</td>
+                            <td><a href='@Url.Action("search_category", new { id = @item.Category_ID })' class="btn btn-primary">Edit</a></td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+    <!-- Modal -->
+
+    <!-- Search Modal -->
+    <div class="modal fade" id="modalSearchResult" tabindex="-1" role="dialog" aria-labelledby="search-result" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title" id="search-result">Categories</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="well">
+                        <table class="table table-bordered table-condensed">
+                            <thead>
+                                <tr>
+                                    <th>Category ID</th>
+                                    <th>Category Name</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th>
+                                        <label id="lblCategoryID"></label>
+                                    </th>
+                                    <th>
+                                        <label id="lblCategoryName"></label>
+                                    </th>
+                                    <th>
+                                        <label id="lblDescription"></label>
+                                    </th>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Update Modal -->
+
+    <div class="modal fade" id="modalUpdate" tabindex="-1" role="dialog" aria-labelledby="update" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title" id="update">Update Category</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row well">
+                        <div class="col-md-6">
+                            <form class="form-horizontal" action='@Url.Action("Update")' method="post">
+                                @Html.ValidationSummary()
+                                <div class="form-group" hidden>
+                                    <h4>@Html.DisplayNameFor(m => m.First().Category_ID)</h4>
+                                    @Html.TextBox("Category_ID", "", new { @class = "form-control", @id = "category_id" })
+                                </div>
+                                <div class="form-group">
+                                    <h4>@Html.DisplayNameFor(m => m.First().Category_Name)</h4>
+                                    @Html.TextBox("Category_Name", "", new { @class = "form-control", @id = "category_name" })
+                                </div>
+                                <div class="form-group">
+                                    <h4>@Html.DisplayNameFor(m => m.First().Description)</h4>
+                                    @Html.TextArea("Description", "", new { @class = "form-control", @id = "description" })
+                                </div>
+                                <input type="submit" class="btn btn-primary" value="Submit" />
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Create New Category -->
+
+    <div class="modal fade" id="modalCreate" tabindex="-1" role="dialog" aria-labelledby="create" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title" id="create">Create Category</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row well">
+                        @Html.Action("Create")
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Art Modal -->
+
+    <div class="modal fade" id="modalArt" tabindex="-1" role="dialog" aria-labelledby="art" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title" id="art">Show Art</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row well">
+                        <div id="carousel-art" class="carousel slide" data-ride="carousel">
+                            <!-- Indicators -->
+                            <ol class="carousel-indicators">
+                                <li data-target="#carousel-art" data-slide-to="0" class="active"></li>
+                                <li data-target="#carousel-art" data-slide-to="1"></li>
+                                <li data-target="#carousel-art" data-slide-to="2"></li>
+                                <li data-target="#carousel-art" data-slide-to="3"></li>
+                            </ol>
+
+                            <!-- Wrapper for slides -->
+                            <div class="carousel-inner" role="listbox">
+                                <div class="item active">
+                                    <img src="~/Content/Image/Inspir1.png" alt="art1">
+                                </div>
+                                <div class="item">
+                                    <img src="~/Content/Image/Inspir2.png" alt="art2">
+                                </div>
+                                <div class="item">
+                                    <img src="~/Content/Image/Inspir3.png" alt="art3">
+                                </div>
+                                <div class="item">
+                                    <img src="~/Content/Image/Inspir4.png" alt="art4">
+                                </div>
+                            </div>
+
+                            <!-- Controls -->
+                            <a class="left carousel-control" href="#carousel-art" role="button" data-slide="prev">
+                                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="right carousel-control" href="#carousel-art" role="button" data-slide="next">
+                                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+@section scripts {
+    <script type="text/javascript">
+
+        function BindResult(response) {
+            $("#lblCategoryID").html(response.Category_ID);
+            $("#lblCategoryName").html(response.Category_Name);
+            $("#lblDescription").html(response.Description);
+            $("#modalSearchResult").modal('toggle');
+        }
+
+        $(document).ready(function () {
+
+            $(".selectpicker").selectpicker({
+                style: 'btn-info',
+                size: 4
+            });
+
+            $("#tblCategory a").click(function (e) {
+                e.preventDefault();
+                var url = $(this).attr('href');
+
+                $.ajax({
+                    url: url,
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function (response) {
+                        $("#category_id").val(response.Category_ID);
+                        $("#category_name").val(response.Category_Name);
+                        $("#description").val(response.Description);
+                        $("#modalUpdate").modal('toggle');
+                    },
+                    error: function (xhr, ajaxOptions, thrownError) {
+                        alertify.error(xhr.status + " " + thrownError);
+                    }
+                });
+            });
+
+            $("#btnSearch").click(function (e) {
+                e.preventDefault();
+                var search_string = $("#txtSearch").val();
+                $.ajax({
+                    url: 'http://localhost/NewMVC/categories/search_category/' + search_string,
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function (response) {
+                        BindResult(response);
+                    },
+                    error: function (xhr, ajaxOptions, thrownError) {
+                        alertify.error(xhr.status + " " + thrownError.toString());
+
+                    }
+
+                });
+
+            });
+
+            $("#CategoryName").change(function () {
+                var CategoryName = $(this).val();
+                var data = { category_name: CategoryName };
+                $.ajax({
+                    url: '@Url.Action("search_category_by_name")',
+                    type: 'POST',
+                    data: JSON.stringify(data),
+                    contentType: 'application/json',
+                    dataType: 'json',
+                    success: function (response) {
+                        BindResult(response);
+                    },
+                    error: function (xhr, ajaxOptions, thrownError) {
+                        alertify.error(xhr.status + " " + thrownError);
+                    }
+
+                });
+
+            });
+
+        });
+
+    </script>
+}
+    

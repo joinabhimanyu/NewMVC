@@ -1,0 +1,101 @@
+﻿@{
+    Layout = null;
+    ViewBag.title = "Materialize Page";
+}
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>@ViewBag.title</title>
+
+@*    @Scripts.Render("~/Content/css/frameworks")*@
+@*    @Scripts.Render("~/Content/css/Animate")*@
+
+    <link rel="shortcut icon" href="~/img/favicon.ico" />
+
+    <link rel="stylesheet" type="text/css" href="~/bower_components/materialize/dist/css/materialize.css" media="screen,projection" />
+
+    <style type="text/css">
+
+        .container {
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .row {
+            margin-top: 1px;
+        }
+
+    </style>
+
+</head>
+<body ng-app="MaterializeModule">
+    <div class="container">
+        <div ui-view=""></div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+
+    <ul class="collapsible popout" data-collapsible="accordion">
+        <li>
+            <div class="collapsible-header"><i class="mdi-image-filter-drama">First</i></div>
+            <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet.</p></div>
+        </li>
+        <li>
+            <div class="collapsible-header"><i class="mdi-maps-place">Second</i></div>
+            <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet.</p></div>
+        </li>
+        <li>
+            <div class="collapsible-header"><i class="mdi-social-whatshot">Second</i></div>
+            <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet.</p></div>
+        </li>
+    </ul>
+
+</div>
+
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+@*    @Scripts.Render("~/bundles/js/frameworks")*@
+
+    <script type="text/javascript" src="~/bower_components/angular/angular.js"></script>
+    <script type="text/javascript" src="~/Scripts/angular-route.js"></script>
+    <script type="text/javascript" src="~/Scripts/angular-resource.js"></script>
+    <script type="text/javascript" src="~/bower_components/angular-animate/angular-animate.js"></script>
+    <script type="text/javascript" src="~/bower_components/angular-aria/angular-aria.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angular_material/0.8.3/angular-material.min.js"></script>
+    <script type="text/javascript" src="~/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script type="text/javascript" src="~/bower_components/materialize/dist/js/materialize.js"></script>
+
+    <script type="text/javascript" src="~/Scripts/app/directives/DirectDropDown.js"></script>
+    <script type="text/javascript" src="~/Scripts/app/directives/DirectCard.js"></script>
+    <script type="text/javascript" src="~/Scripts/app/controllers/MaterializeController.js"></script>
+    <script type="text/javascript" src="~/Scripts/app/modules/MaterializeModule.js"></script>
+
+    
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+           
+            //Collapsible list initialization
+
+            $(".collapsible").collapsible({
+                accordion: false
+            });
+
+            
+
+        });
+
+    </script>
+
+</body>
+</html>

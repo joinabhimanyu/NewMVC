@@ -1,0 +1,21 @@
+{
+  "name": "NewMVC",
+  "version": "0.0.0",
+  "authors": [
+    "joinabhimanyu <joinabhimanyu@gmail.com>"
+  ],
+  "description": "bower for front end DI",
+  "keywords": [
+    "bower"
+  ],
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "polymer": "Polymer/polymer#~0.5.5",
+    "angular-material": "~0.8.3",
+    "bootstrap-material-design": "~0.3.0",
+    "bootstrap": "~3.3.4",
+    "angular-ui-router": "~0.2.13",
+    "materialize": "~0.96.1"
+  }
+}

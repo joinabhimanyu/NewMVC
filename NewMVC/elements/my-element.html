@@ -1,0 +1,39 @@
+﻿<link rel="import" href="../bower_components/polymer/polymer.html" />
+
+<polymer-element name="my-element" attributes="color owner">
+    <template>
+        <div class="row">
+            <div class="form-group">
+                <div class="col-md-6">
+                    <ul class="list-inline">
+                    <li>
+                        <input type="text" value="{{owner}}" class="form-control" placeholder="Enter owner" />
+                    </li>
+                    <li>
+                        <input type="text" value="{{color}}" class="form-control" placeholder="Enter color" />
+                    </li>
+                </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <button type="button" id="btnHide" class="btn btn-lg btn-block btn-info">Hide</button>
+        </div>
+        <div class="jumbotron">
+            <h2>Hello {{owner}}, Polymer element</h2>
+            <p class="well" style="color: {{color}}">
+                Polymer provides extra goodies for creating declarative, souped-up custom elements. We call these “Polymer elements”. From the outside they look just like any other DOM element, but inside they’re filled with handy features like two-way data binding and other bits of Polymer magic. These features make it easy to build complex components with much less code.
+            </p>
+        </div>
+    </template>
+    <script>
+        Polymer({
+            owner: '',
+            color: '',
+            ready: function () {
+                console.log('polymer loaded');              
+            },
+            
+        });
+    </script>
+</polymer-element>

@@ -1,0 +1,46 @@
+﻿
+<div class="row">
+
+    <div layout="column" layout-align="top center">
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <ul class="list-inline">
+                <li>
+                    <span class="md-flex">{{toolbarText}}</span>
+                </li>
+                <li class="pull-right">
+                    <div flex="33">
+                        <md-button class="md-raised md-primary" ng-click="showAdvanced($event)">Learn More</md-button>
+                    </div>
+                </li>
+            </ul>
+            
+        </div>
+    </md-toolbar>
+
+
+    <md-content layout="column" layout-align="center center">
+
+        <div class="app-content">
+
+            <form ng-submit="search()">
+                <div ng-show="!isSearching">
+                    <md-text-float label="Search for" class="long" ng-model="searchTerm"></md-text-float>
+                </div>
+                <md-progress-circular ng-if="isSearching" md-mode="indeterminate"></md-progress-circular>
+            </form>
+
+            <div layout="column" layout-align="center center">
+                <md-card style="width: 800px; height: 600px;" ng-repeat="picture in results.data.photos.photo">
+                    <img ng-src="https://farm{{picture.farm}}.staticflickr.com/{{picture.server}}/{{picture.id}}_{{picture.secret}}_b.jpg" alt="Card Image" class="md-card-image" />
+                    <h3>{{picture.title}}</h3>
+                </md-card>
+            </div>
+        </div>
+
+    </md-content>
+
+</div>
+
+</div>
+

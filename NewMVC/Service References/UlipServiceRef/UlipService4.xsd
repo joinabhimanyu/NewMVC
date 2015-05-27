@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/UlipBL" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/UlipBL" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="ArrayOfIllustrationGridDtls">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="IllustrationGridDtls" nillable="true" type="tns:IllustrationGridDtls" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfIllustrationGridDtls" nillable="true" type="tns:ArrayOfIllustrationGridDtls" />
+  <xs:complexType name="IllustrationGridDtls">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AmtAvailableforInvestment" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BasicPremium" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DeathBenefit" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FundMgmtCharges" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FundvalueEnd" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FundvalueSurrenderCharges" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MortalityCharges" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PolicyAdminCharges" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PolicyYear" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Premium" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PremiumAllocationCharges" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PremiumAllocationonAmt" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RiderPremium" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SurrenderValue" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TopCharges" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TopupPremium" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TotalCharges" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="err_msg" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="IllustrationGridDtls" nillable="true" type="tns:IllustrationGridDtls" />
+  <xs:complexType name="ArrayOfCustomeridLOVResult">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CustomeridLOVResult" nillable="true" type="tns:CustomeridLOVResult" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCustomeridLOVResult" nillable="true" type="tns:ArrayOfCustomeridLOVResult" />
+  <xs:complexType name="CustomeridLOVResult">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="customer_code" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="customer_name" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CustomeridLOVResult" nillable="true" type="tns:CustomeridLOVResult" />
+  <xs:complexType name="ArrayOfPolicynoLOVResult">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PolicynoLOVResult" nillable="true" type="tns:PolicynoLOVResult" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPolicynoLOVResult" nillable="true" type="tns:ArrayOfPolicynoLOVResult" />
+  <xs:complexType name="PolicynoLOVResult">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="customer_code" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="customer_name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="policy_effective_date" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="policy_no" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PolicynoLOVResult" nillable="true" type="tns:PolicynoLOVResult" />
+  <xs:complexType name="PolicyServicingViewDtls">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="annual_premium" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="assured_name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="base_sum_insured" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="err_code" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="err_msg" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="num_policy_no" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="policy_start_date" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="policy_status" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="prem_payment_mode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="product_name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ref_no" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PolicyServicingViewDtls" nillable="true" type="tns:PolicyServicingViewDtls" />
+  <xs:complexType name="ArrayOfPolicyServicingProceedDtls">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PolicyServicingProceedDtls" nillable="true" type="tns:PolicyServicingProceedDtls" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPolicyServicingProceedDtls" nillable="true" type="tns:ArrayOfPolicyServicingProceedDtls" />
+  <xs:complexType name="PolicyServicingProceedDtls">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="available_units" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="current_nav" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="entry_label" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="err_code" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="err_msg" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="fund_value" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="investment_percent" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="max_withdrawl_amt" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="request_id" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PolicyServicingProceedDtls" nillable="true" type="tns:PolicyServicingProceedDtls" />
+</xs:schema>

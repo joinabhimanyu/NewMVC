@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="40c14d32-af78-4a8f-a83b-f7265deecdff" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://172.31.247.146/WcfGenericService/GenericService.svc/mex" Protocol="mex" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="3075c775-43dc-40d4-8be5-f9b7dca9c68e" SourceId="1" SourceUrl="http://172.31.247.146/WcfGenericService/GenericService.svc/mex" />
+    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="e5ca71f4-3c3f-4bfb-9e54-2415ecdf6b82" SourceId="1" SourceUrl="http://172.31.247.146/WcfGenericService/GenericService.svc/mex" />
+    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="51b29540-cfc8-4d5d-9058-fe18e47ae28d" SourceId="1" SourceUrl="http://172.31.247.146/WcfGenericService/GenericService.svc/mex" />
+    <MetadataFile FileName="GenericMasterBL.xsd" MetadataType="Schema" ID="9886e620-7e6f-4fd7-97a3-8ae9e710a750" SourceId="1" SourceUrl="http://172.31.247.146/WcfGenericService/GenericService.svc/mex" />
+    <MetadataFile FileName="Arrays.xsd" MetadataType="Schema" ID="c98129cc-fb6d-42e5-b70f-ae77766953c9" SourceId="1" SourceUrl="http://172.31.247.146/WcfGenericService/GenericService.svc/mex" />
+    <MetadataFile FileName="GeneralServiceBL.xsd" MetadataType="Schema" ID="86c12c4c-2662-4fdc-b52f-65efc706becf" SourceId="1" SourceUrl="http://172.31.247.146/WcfGenericService/GenericService.svc/mex" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="UlipService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost/WCFUlipService/UlipService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost/WCFUlipService/UlipService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost/WCFUlipService/UlipService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/WCFUlipService" />
+      <xsd:import schemaLocation="http://localhost/WCFUlipService/UlipService.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import schemaLocation="http://localhost/WCFUlipService/UlipService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/UlipBL" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IUlipService_GetData_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetData" />
+  </wsdl:message>
+  <wsdl:message name="IUlipService_GetData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUlipService_GetDataUsingDataContract_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDataUsingDataContract" />
+  </wsdl:message>
+  <wsdl:message name="IUlipService_GetDataUsingDataContract_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDataUsingDataContractResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUlipService_GetIllustrationHeaders_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetIllustrationHeaders" />
+  </wsdl:message>
+  <wsdl:message name="IUlipService_GetIllustrationHeaders_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetIllustrationHeadersResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUlipService_GetIllustrationGridDtls_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetIllustrationGridDtls" />
+  </wsdl:message>
+  <wsdl:message name="IUlipService_GetIllustrationGridDtls_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetIllustrationGridDtlsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUlipService_SaveIllustrationDtls_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveIllustrationDtls" />
+  </wsdl:message>
+  <wsdl:message name="IUlipService_SaveIllustrationDtls_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveIllustrationDtlsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUlipService_CustomerIdLOVPopulate_InputMessage">
+    <wsdl:part name="parameters" element="tns:CustomerIdLOVPopulate" />
+  </wsdl:message>
+  <wsdl:message name="IUlipService_CustomerIdLOVPopulate_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CustomerIdLOVPopulateResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUlipService_ExportPdf_InputMessage">
+    <wsdl:part name="parameters" element="tns:ExportPdf" />
+  </wsdl:message>
+  <wsdl:message name="IUlipService_ExportPdf_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ExportPdfResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUlipService_PolicyNoLOVPopulate_InputMessage">
+    <wsdl:part name="parameters" element="tns:PolicyNoLOVPopulate" />
+  </wsdl:message>
+  <wsdl:message name="IUlipService_PolicyNoLOVPopulate_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PolicyNoLOVPopulateResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUlipService_GetViewDtls_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetViewDtls" />
+  </wsdl:message>
+  <wsdl:message name="IUlipService_GetViewDtls_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetViewDtlsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUlipService_GetProceedDtls_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetProceedDtls" />
+  </wsdl:message>
+  <wsdl:message name="IUlipService_GetProceedDtls_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetProceedDtlsResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IUlipService">
+    <wsdl:operation name="GetData">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUlipService/GetData" message="tns:IUlipService_GetData_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUlipService/GetDataResponse" message="tns:IUlipService_GetData_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDataUsingDataContract">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUlipService/GetDataUsingDataContract" message="tns:IUlipService_GetDataUsingDataContract_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUlipService/GetDataUsingDataContractResponse" message="tns:IUlipService_GetDataUsingDataContract_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetIllustrationHeaders">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUlipService/GetIllustrationHeaders" message="tns:IUlipService_GetIllustrationHeaders_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUlipService/GetIllustrationHeadersResponse" message="tns:IUlipService_GetIllustrationHeaders_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetIllustrationGridDtls">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUlipService/GetIllustrationGridDtls" message="tns:IUlipService_GetIllustrationGridDtls_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUlipService/GetIllustrationGridDtlsResponse" message="tns:IUlipService_GetIllustrationGridDtls_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveIllustrationDtls">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUlipService/SaveIllustrationDtls" message="tns:IUlipService_SaveIllustrationDtls_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUlipService/SaveIllustrationDtlsResponse" message="tns:IUlipService_SaveIllustrationDtls_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CustomerIdLOVPopulate">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUlipService/CustomerIdLOVPopulate" message="tns:IUlipService_CustomerIdLOVPopulate_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUlipService/CustomerIdLOVPopulateResponse" message="tns:IUlipService_CustomerIdLOVPopulate_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ExportPdf">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUlipService/ExportPdf" message="tns:IUlipService_ExportPdf_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUlipService/ExportPdfResponse" message="tns:IUlipService_ExportPdf_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="PolicyNoLOVPopulate">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUlipService/PolicyNoLOVPopulate" message="tns:IUlipService_PolicyNoLOVPopulate_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUlipService/PolicyNoLOVPopulateResponse" message="tns:IUlipService_PolicyNoLOVPopulate_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetViewDtls">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUlipService/GetViewDtls" message="tns:IUlipService_GetViewDtls_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUlipService/GetViewDtlsResponse" message="tns:IUlipService_GetViewDtls_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProceedDtls">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUlipService/GetProceedDtls" message="tns:IUlipService_GetProceedDtls_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUlipService/GetProceedDtlsResponse" message="tns:IUlipService_GetProceedDtls_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="EndPointHTTPUlip" type="tns:IUlipService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetData">
+      <soap:operation soapAction="http://tempuri.org/IUlipService/GetData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDataUsingDataContract">
+      <soap:operation soapAction="http://tempuri.org/IUlipService/GetDataUsingDataContract" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetIllustrationHeaders">
+      <soap:operation soapAction="http://tempuri.org/IUlipService/GetIllustrationHeaders" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetIllustrationGridDtls">
+      <soap:operation soapAction="http://tempuri.org/IUlipService/GetIllustrationGridDtls" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveIllustrationDtls">
+      <soap:operation soapAction="http://tempuri.org/IUlipService/SaveIllustrationDtls" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CustomerIdLOVPopulate">
+      <soap:operation soapAction="http://tempuri.org/IUlipService/CustomerIdLOVPopulate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExportPdf">
+      <soap:operation soapAction="http://tempuri.org/IUlipService/ExportPdf" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PolicyNoLOVPopulate">
+      <soap:operation soapAction="http://tempuri.org/IUlipService/PolicyNoLOVPopulate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetViewDtls">
+      <soap:operation soapAction="http://tempuri.org/IUlipService/GetViewDtls" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProceedDtls">
+      <soap:operation soapAction="http://tempuri.org/IUlipService/GetProceedDtls" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="UlipService">
+    <wsdl:port name="EndPointHTTPUlip" binding="tns:EndPointHTTPUlip">
+      <soap:address location="http://localhost/WCFUlipService/UlipService.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

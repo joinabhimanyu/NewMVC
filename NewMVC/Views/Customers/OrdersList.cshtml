@@ -1,0 +1,251 @@
+﻿@model IEnumerable<NewMVC.Models.Order>
+
+@{
+    Layout = "../Shared/_Layout.cshtml";
+    ViewBag.title = "Orders Page";
+}
+
+
+@section styles {
+    <style type="text/css">
+        body {
+            background-color: white;
+            background-position: center;
+            background-repeat: no-repeat;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        th {
+            border-bottom: 1px solid #d6d6d6;
+        }
+
+        tr:nth-child(even) {
+            background: #e9e9e9;
+        }
+    </style>
+}
+    
+
+    <div class="container">
+
+        <div class="page-header">
+            <ul class="list-inline">
+                <li>
+                    <a href="@Url.Action("Index")">
+                        <span class="glyphicon glyphicon-backward" aria-hidden="true"></span>
+                    </a>
+                </li>
+                <li>
+                    <h2>Orders for Customer ID: @Model.First().Customer_ID</h2>
+                </li>
+            </ul>
+        </div>
+
+        <div class="row">
+            <div data-role="main" class="ui-content">
+                <table class="table table-bordered table-condensed ui-shadow">
+                    <thead>
+                        <tr>
+                            <th>Order Details</th>
+                            <th>@Html.DisplayNameFor(m => m.First().Ship_Name)</th>
+                            <th>@Html.DisplayNameFor(m => m.First().Ship_Address)</th>
+                            <th>@Html.DisplayNameFor(m => m.First().Ship_City)</th>
+                            <th>@Html.DisplayNameFor(m => m.First().Ship_Region)</th>
+                            <th>@Html.DisplayNameFor(m => m.First().Ship_Postal_Code)</th>
+                            <th>@Html.DisplayNameFor(m => m.First().Ship_Country)</th>
+                            <th>@Html.DisplayNameFor(m => m.First().Ship_Via)</th>
+                            <th>@Html.DisplayNameFor(m => m.First().Order_Date)</th>
+                            <th>@Html.DisplayNameFor(m => m.First().Required_Date)</th>
+                            <th>@Html.DisplayNameFor(m => m.First().Shipped_Date)</th>
+                            <th>@Html.DisplayNameFor(m => m.First().Freight)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    <a href="@Url.HttpRouteUrl("DefaultApi", new { controller="NorthwindApi", id=@item.Order_ID })" class="linkOrderDetails">
+                                        <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                                    </a>
+                                </td>
+                                <td>
+                                    @{
+                            if (item.Ship_Name != null)
+                            {
+                                        @Html.Label(item.Ship_Name.ToString().Trim())
+                            }
+                                    }
+                                </td>
+                                <td>
+                                    @{
+                            if (item.Ship_Address != null)
+                            {
+                                        @Html.Label(item.Ship_Address.ToString().Trim())
+                            }
+                                    }
+                                </td>
+                                <td>
+                                    @{
+                            if (item.Ship_City != null)
+                            {
+                                        @Html.Label(item.Ship_City.ToString().Trim())
+                            }
+                                    }
+                                </td>
+                                <td>
+                                    @{
+                            if (item.Ship_Region != null)
+                            {
+                                        @Html.Label(item.Ship_Region.ToString().Trim())
+                            }
+                                    }
+                                </td>
+                                <td>
+                                    @{
+                            if (item.Ship_Postal_Code != null)
+                            {
+                                        @Html.Label(item.Ship_Postal_Code.ToString().Trim())
+                            }
+                                    }
+                                </td>
+                                <td>
+                                    @{
+                            if (item.Ship_Country != null)
+                            {
+                                        @Html.Label(item.Ship_Country.ToString().Trim())
+                            }
+                                    }
+                                </td>
+                                <td>
+                                    @{
+                            if (item.Ship_Via != null)
+                            {
+                                        @Html.Label(item.Ship_Via.ToString().Trim())
+                            }
+                                    }
+                                </td>
+                                <td>
+                                    @{
+                            if (item.Order_Date != null)
+                            {
+                                        @Html.Label(item.Order_Date.ToString().Trim())
+                            }
+                                    }
+                                </td>
+                                <td>
+                                    @{
+                            if (item.Required_Date != null)
+                            {
+                                        @Html.Label(item.Required_Date.ToString().Trim())
+                            }
+                                    }
+                                </td>
+                                <td>
+                                    @{
+                            if (item.Shipped_Date != null)
+                            {
+                                        @Html.Label(item.Shipped_Date.ToString().Trim())
+                            }
+                                    }
+                                </td>
+                                <td>
+                                    @{
+                            if (item.Freight != null)
+                            {
+                                        @Html.Label(item.Freight.ToString().Trim())
+                            }
+                                    }
+                                </td>
+
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+    <!-- Order Details Modal -->
+
+    <div class="modal fade" id="modalOrderDetails" tabindex="-1" role="dialog" aria-labelledby="order_details" aria-hidden="true">
+        <div class="modal-dialog modal-wide">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title" id="order_details">Order Details</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="well">
+                        <table class="table table-bordered table-responsive">
+                            <thead>
+                                <tr>
+                                    <th>Order ID</th>
+                                    <th>Product ID</th>
+                                    <th>Unit Price</th>
+                                    <th>Quantity</th>
+                                    <th>Discount</th>
+                                    
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+@section scripts {
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            $(".linkOrderDetails").click(function (e) {
+                e.preventDefault();
+                var url = $(this).attr('href');
+
+                $.ajax({
+                    url: url,
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function (response) {
+                        var result = '';
+                        $("#modalOrderDetails table tbody").empty();
+                        $.each(response, function (index, value) {
+                            result += '<tr>';
+                            result += '<td><label>' + value.Order_ID + '</label></td>';
+                            result += '<td><label>' + value.Product_ID + '</label></td>';
+                            result += '<td><label>' + value.Unit_Price + '</label></td>';
+                            result += '<td><label>' + value.Quantity + '</label></td>';
+                            result += '<td><label>' + value.Discount + '</label></td>';
+                            result += '</tr>';
+                            $("#modalOrderDetails table tbody").append(result);
+                            result = '';
+                        });
+
+                        $("#modalOrderDetails").modal('toggle');
+                    },
+                    error: function (xhr, ajaxOptions, thrownError) {
+                        alertify.alert(xhr.status + " " + thrownError);
+                    }
+                });
+
+            });
+
+        });
+
+    </script>
+}
+    

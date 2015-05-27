@@ -1,0 +1,326 @@
+﻿@model IEnumerable<NewMVC.Models.Customer>
+
+@{
+    Layout = "../Shared/_Layout.cshtml";
+    ViewBag.title = "Index.cshtml";
+    ViewBag.message = "Customers Page";
+
+    var company_name = Model.Select(m => m.Company_Name).Distinct().ToList<string>();
+    var city = Model.Select(m => m.City).Distinct().ToList<string>();
+    var country = Model.Select(m => m.Country).Distinct().ToList<string>();
+    
+}
+
+    @section styles {
+        <style type="text/css">
+        body {
+            background-color: white;
+            background-position: center;
+            background-repeat: no-repeat;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        th {
+            border-bottom: 1px solid #d6d6d6;
+        }
+
+        tr:nth-child(even) {
+            background: #e9e9e9;
+        }
+
+        .modal .modal-wide {
+            width: 70%;
+        }
+    </style>
+    }
+    
+    <div class="container">
+
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="@Url.Action("Index")">
+                        <img src="~/Content/Image/homelinkimg1.png" alt="Home" />
+                    </a>
+                </div>
+                <div class="collapse navbar-collapse" id="menu-nav">
+                    <ul class="nav navbar-nav">
+                        <li><a href="@Url.Action("Index", "Categories")">Categories Page</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="row well">
+            <div class="col-md-12">
+                <form id="frmSearchByName" class="form-inline" method="post" action="@Url.Action("SearchCustomerByName")">
+                    <div class="form-group">
+                        <input type="text" id="autoContactName" name="autoContactName" class="form-control" placeholder="Enter Contact Name" />
+                    </div>
+                    <input type="submit" class="btn btn-success" value="Search" />
+                </form>
+            </div>
+        </div>
+
+        <div class="row well">
+            <div class="col-md-3">
+                <select id="drpCompany" class="selectpicker" style="width: auto">
+                    @foreach (var item in company_name)
+                    {
+                        <option>@item.Trim()</option>
+                    }
+                </select>
+            </div>
+            <div class="col-md-3">
+                <select id="drpCity" class="selectpicker" style="width: auto">
+                    @foreach (var item in city)
+                    {
+                        <option>@item.Trim()</option>
+                    }
+                </select>
+            </div>
+
+            <div class="col-md-3">
+                <select id="drpCountry" class="selectpicker" style="width: auto">
+                    @foreach (var item in country)
+                    {
+                        <option>@item.Trim()</option>
+                    }
+                </select>
+            </div>
+        </div>
+
+        
+
+        <div class="row">
+            <div data-role="main" class="ui-content">
+                <table class="table table-bordered table-condensed table-responsive ui-shadow">
+                    <thead>
+                        <tr>
+                            <th>Orders</th>
+                            <th>Company Name</th>
+                            <th>Contact Name</th>
+                            <th>Contact Title</th>
+                            <th>Address</th>
+                            <th>City</th>
+                            <th>Postal Code</th>
+                            <th>Country</th>
+                            <th>Phone</th>
+                            <th>Fax</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    <a href="@Url.Action("OrdersList", new { customerID=@item.Customer_ID })" class="linkGetOrder">
+                                        <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                                    </a>
+                                </td>
+                                <td>@Html.Label(item.Company_Name)</td>
+                                <td>@Html.Label(item.Contact_Name)</td>
+                                <td>@Html.Label(item.Contact_Title)</td>
+                                <td>@Html.Label(item.Address)</td>
+                                <td>@Html.Label(item.City)</td>
+                                <td>@Html.Label(item.Postal_Code)</td>
+                                <td>@Html.Label(item.Country)</td>
+                                <td>@Html.Label(item.Phone)</td>
+                                <td>@Html.Label(item.Fax)</td>
+                            </tr>
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Modal -->
+
+    <!-- Search Modal -->
+
+    <div class="modal fade" id="modalSearchResult" tabindex="-1" role="dialog" aria-labelledby="search-result" aria-hidden="true">
+        <div class="modal-dialog modal-wide">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title" id="search-result">Customers</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="well">
+                        <table class="table table-bordered table-responsive">
+                            <thead>
+                                <tr>
+                                    <th>Orders</th>
+                                    <th>Company Name</th>
+                                    <th>Contact Name</th>
+                                    <th>Contact Title</th>
+                                    <th>Address</th>
+                                    <th>City</th>
+                                    <th>Postal Code</th>
+                                    <th>Country</th>
+                                    <th>Phone</th>
+                                    <th>Fax</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    @section scripts {
+        <script type="text/javascript">
+
+            function BindResult(response) {
+                var row_data = '';
+                $("#modalSearchResult table tbody").empty();
+                $.each(response, function (index, value) {
+                    row_data = "<tr>";
+                    row_data += "<td><a href='@Url.Action("OrdersList")?customerID=" + value.Customer_ID + "' class='linkGetOrder'><span class='glyphicon glyphicon-search' aria-hidden='true'></span></a></td>";
+                row_data += '<td><label>' + value.Company_Name + '</label></td>';
+                row_data += '<td><label>' + value.Contact_Name + '</label></td>';
+                row_data += '<td><label>' + value.Contact_Title + '</label></td>';
+                row_data += '<td><label>' + value.Address + '</label></td>';
+                row_data += '<td><label>' + value.City + '</label></td>';
+                row_data += '<td><label>' + value.Postal_Code + '</label></td>';
+                row_data += '<td><label>' + value.Country + '</label></td>';
+                row_data += '<td><label>' + value.Phone + '</label></td>';
+                row_data += '<td><label>' + value.Fax + '</label></td>';
+                row_data += '</tr>';
+                $("#modalSearchResult table tbody").append(row_data);
+                row_data = '';
+            });
+
+            $("#modalSearchResult").modal('toggle');
+        }
+
+        $(document).ready(function () {
+
+            $(".selectpicker").selectpicker({
+                style: 'btn-info',
+                size: 4
+            });
+
+            $("#autoContactName").autocomplete({
+                source: function (request, response) {
+                    var name = $("#autoContactName").val();
+                    var data = { name: name };
+                    $.ajax({
+                        url: '@Url.Action("SearchCustomerByName")',
+                        type: 'POST',
+                        data: JSON.stringify(data),
+                        contentType: 'application/json',
+                        dataType: 'json',
+                        success: function (response_data) {
+                            response($.map(response_data, function (item) {
+                                return {
+                                    label: item.Contact_Name,
+                                    value: item.Contact_Name
+                                };
+                            }));
+                        }
+                    });
+                }
+            });
+
+            $("#frmSearchByName").submit(function (e) {
+                e.preventDefault();
+                var name = $("#autoContactName").val();
+                var data = { name: name };
+                var url = $("#frmSearchByName").attr('action');
+                if (!name) {
+                    alertify.error("Please enter contact name");
+                }
+                else {
+                    $.ajax({
+                        url: url,
+                        type: 'POST',
+                        data: JSON.stringify(data),
+                        contentType: 'application/json',
+                        dataType: 'json',
+                        success: function (response) {
+                            BindResult(response);
+                            var row_data = '';
+                        },
+                        error: function (xhr, ajaxOptions, thrownError) {
+                            alertify.error(xhr.status + " " + thrownError);
+                        }
+                    });
+                }
+            });
+
+            $("#drpCompany").change(function () {
+                var company = $(this).val();
+                var data = { company: company };
+                $.ajax({
+                    url: '@Url.Action("SearchCustomerByCompany")',
+                    type: 'POST',
+                    data: JSON.stringify(data),
+                    contentType: 'application/json',
+                    dataType: 'json',
+                    success: function (response) {
+                        BindResult(response);
+                    },
+                    error: function (xhr, ajaxOptions, thrownError) {
+                        alertify.error(xhr.status + " " + thrownError);
+                    }
+                });
+
+            });
+
+            $("#drpCity").change(function () {
+                var city = $(this).val();
+                var data = { city: city };
+                $.ajax({
+                    url: '@Url.Action("SearchCustomerByCity")',
+                    type: 'POST',
+                    data: JSON.stringify(data),
+                    contentType: 'application/json',
+                    dataType: 'json',
+                    success: function (response) {
+                        BindResult(response);
+                    },
+                    error: function (xhr, ajaxOptions, thrownError) {
+                        alertify.error(xhr.status + " " + thrownError);
+                    }
+                });
+            });
+
+
+            $("#drpCountry").change(function () {
+                var country = $(this).val();
+                var data = { country: country };
+                $.ajax({
+                    url: '@Url.Action("SearchCustomerByCountry")',
+                    type: 'POST',
+                    data: JSON.stringify(data),
+                    contentType: 'application/json',
+                    dataType: 'json',
+                    success: function (response) {
+                        BindResult(response);
+                    },
+                    error: function (xhr, ajaxOptions, thrownError) {
+                        alertify.error(xhr.status + " " + thrownError);
+                    }
+                });
+            });
+
+        });
+
+    </script>
+    }
+    

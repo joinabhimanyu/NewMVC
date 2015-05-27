@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="CustomerDataModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+  <EntityContainer Name="CustomerDataModelContainer" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Customers" EntityType="CustomerDataModel.Customer" />
+  </EntityContainer>
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="CustomerID" />
+    </Key>
+    <Property Type="Int32" Name="CustomerID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="FirstName" Nullable="false" />
+    <Property Type="String" Name="LastName" Nullable="false" />
+    <Property Type="String" Name="AddressLine1" Nullable="false" />
+    <Property Type="String" Name="AddressLine2" Nullable="false" />
+    <Property Type="String" Name="City" Nullable="false" />
+    <Property Type="String" Name="State_Province" Nullable="false" />
+    <Property Type="String" Name="ZIP_Postal_Code" Nullable="false" />
+    <Property Type="String" Name="Region_Country" Nullable="false" />
+  </EntityType>
+</Schema>
